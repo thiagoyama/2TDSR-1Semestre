@@ -1,7 +1,12 @@
 package br.com.fiap.revisao.main;
 
+import java.time.LocalDate;
+import java.time.Month;
+
+import br.com.fiap.revisao.model.Endereco;
 import br.com.fiap.revisao.model.Funcionario;
 import br.com.fiap.revisao.model.FuncionarioTerceiro;
+import br.com.fiap.revisao.model.Genero;
 
 public class Teste {
 
@@ -42,6 +47,22 @@ public class Teste {
 		Funcionario fun2 = new FuncionarioTerceiro("Everton", 1000);
 		fun2.aumentarSalario(); //Executa qual implementação? FuncionarioTerceiro
 		System.out.println(fun2.getSalario());
+		
+		//Instanciar um funcionário com todos os dados
+		Funcionario juninho = new Funcionario("Juninho", 500, 16, true, 2, 
+									Genero.MASCULINO, LocalDate.of(2022, Month.MARCH, 10));
+		
+		//Adicionar 2 endereços para o funcionário
+		juninho.getEnderecos().add(new Endereco("Lins de Vasconcelos", "1222"));
+		juninho.getEnderecos().add(new Endereco("Av Paulista", "1100"));
+		
+		//Exibir os dados do funcionário
+		System.out.println(juninho);
+		
+		//Exibir os endereços do funcionário
+		for (Endereco churros : juninho.getEnderecos()) {
+			System.out.println(churros);
+		}
 		
 	}//main
 }//class

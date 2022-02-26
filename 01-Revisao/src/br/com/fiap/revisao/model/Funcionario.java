@@ -1,5 +1,10 @@
 package br.com.fiap.revisao.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Funcionario {
 
 	//Modificadores de acesso
@@ -15,6 +20,19 @@ public class Funcionario {
 	private double salario;
 	private boolean estagio;
 	private int mesesContratado; //Qtd de meses trabalhado
+	
+	private Genero genero;
+	
+	private LocalDate dataDemissao;
+	
+	private List<Endereco> enderecos = new ArrayList<>();
+	
+	public Funcionario(String nome, double salario, int idade,
+			boolean estagio, int mesesContratado, Genero genero, LocalDate dataDemissao) {
+		this(nome, salario, idade, estagio, mesesContratado);
+		this.genero = genero;
+		this.dataDemissao = dataDemissao;
+	}
 	
 	//Construtor -> método especial utilizado na instanciação da classe
 	//1 - Tem o mesmo nome da classe
@@ -71,6 +89,15 @@ public class Funcionario {
 		return mesesContratado > 6 && estagio;
 	}
 	
+	@Override
+	public String toString() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "Nome: " + nome + " Salário: " + salario + 
+				" Meses Contratado: " + mesesContratado + " Idade: " + idade + 
+				(estagio?" Estágio":" Efetivado") + " Gênero: " + genero.texto 
+				+ " Data Demissão: " + dataDemissao.format(formato);
+	}
+	
 	//Getters e Setters - Criar 1 get e 1 set
 	public String getNome() {
 		return nome;
@@ -110,6 +137,30 @@ public class Funcionario {
 
 	public void setMesesContratado(int mesesContratado) {
 		this.mesesContratado = mesesContratado;
+	}
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+
+	public LocalDate getDataDemissao() {
+		return dataDemissao;
+	}
+
+	public void setDataDemissao(LocalDate dataDemissao) {
+		this.dataDemissao = dataDemissao;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 	
 }
