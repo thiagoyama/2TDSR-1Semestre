@@ -20,3 +20,7 @@ Interface (acoplamento)
 Datas Calendar
 API Java 8 de Datas - LocalDate, LocalTime e LocalDateTime
 Enum
+
+Classe abstrata
+final, static
+Exceptions (checked e unchecked)

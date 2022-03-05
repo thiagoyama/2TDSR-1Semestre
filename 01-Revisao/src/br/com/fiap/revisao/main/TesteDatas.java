@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -28,7 +29,7 @@ public class TesteDatas {
 		LocalDate dataHoje = LocalDate.now();
 		
 		//Criar a data de apresentação da challenge 25/05/2022
-		LocalDate dataApresentacao = LocalDate.of(2022, 5, 25);
+		LocalDate dataApresentacao = LocalDate.of(2022, Month.AUGUST, 25);
 		
 		//Criar a hora atual
 		LocalTime horaAtual = LocalTime.now();
