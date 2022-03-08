@@ -32,7 +32,7 @@ public class ContaPoupanca extends Conta implements ContaInvestimento {
 	public double calculaRetornoInvestimento() {
 		return saldo * RENDIMENTO;
 	}
-
+	
 	@Override
 	public void retirar(double valor) throws SaldoInsuficienteException {
 		//Validar se o saldo eh suficiente junto da taxa de retirada

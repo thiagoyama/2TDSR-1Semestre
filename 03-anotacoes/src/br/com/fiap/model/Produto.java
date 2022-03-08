@@ -3,7 +3,9 @@ package br.com.fiap.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import br.com.fiap.anotacao.Coluna;
+import br.com.fiap.anotacao.Tabela;
 
+@Tabela(nome="TB_PRODUTO")
 public class Produto {
 
 	@Coluna(nome = "cd_produto", chave =true, obrigatorio = true) 

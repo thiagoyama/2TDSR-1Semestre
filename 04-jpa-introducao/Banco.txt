@@ -1,0 +1,11 @@
+Banco, Tabela:
+
+TB_CLIENTE
+---
+cd_cliente number (PK) not null
+nm_cliente varchar2(80) not null
+ds_email varchar2(50)
+dt_cadastro date not null
+st_ativo number
+
+Sequence: SQ_TB_CLIENTE (responsável por gerar a PK da tabela)
