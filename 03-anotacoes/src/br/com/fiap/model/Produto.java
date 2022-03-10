@@ -14,7 +14,7 @@ public class Produto {
 	@Coluna(nome = "nm_produto", tamanho = 100, obrigatorio = true)
 	private String nome;
 	
-	@Coluna(nome = "ds_produto", tamanho = 255)
+	@Coluna(nome = "ds_produto")
 	private String descricao;
 	
 	@Coluna(nome = "vl_produto")
