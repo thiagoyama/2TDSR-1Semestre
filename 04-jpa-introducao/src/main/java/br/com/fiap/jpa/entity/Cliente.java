@@ -18,6 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name="TB_CLIENTE")
 					//nome no Java, nome no banco, incremento
@@ -35,6 +37,7 @@ public class Cliente {
 	@Column(name="ds_email", unique = true, length = 50)
 	private String email;
 	
+	@CreationTimestamp //Criar a data de cadastro automáticamente
 	@Temporal(TemporalType.TIMESTAMP) //armazena a data e hora no banco, utilizado com Calendar
 	@Column(name="dt_cadastro", nullable = false, updatable = false) //updatable -> será atualizado?
 	private Calendar dataCadastro;
@@ -58,6 +61,17 @@ public class Cliente {
 	@Enumerated(EnumType.STRING) // define que será gravado o texto da constante e não a posição
 	@Column(name="ds_genero", length = 40)
 	private Genero genero;
+	
+	public Cliente(String nome, String email, BigDecimal credito, LocalDate dataNascimento,
+			byte[] fotoCnh, Genero genero) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.credito = credito;
+		this.dataNascimento = dataNascimento;
+		this.fotoCnh = fotoCnh;
+		this.genero = genero;
+	}
 
 	public Integer getCodigo() {
 		return codigo;

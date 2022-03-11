@@ -25,7 +25,7 @@ ds_tipo varchar2(30), enum no java (Financeiro, Educacao, Saude, Etc..)
 dt_cadastro timestamp not null
 dt_fundacao date
 fl_contrato_social blob (arquivo pdf do contrato social da empresa)
-st_ativo number
+st_ativo number(1,0) (Boolean no java)
 
 Atributo Integer para a quantidade de funcionários, somente no Java.
 
