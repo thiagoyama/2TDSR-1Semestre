@@ -2,46 +2,40 @@ package br.com.fiap.jpa.main;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.Month;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import br.com.fiap.jpa.entity.Cliente;
 import br.com.fiap.jpa.entity.Genero;
 
-public class ExemploCadastro {
-	
+public class ExemploAtualizacao {
+
 	public static void main(String[] args) {
-		//Obter um objeto da fabrica de Entity Manager
+		//Obter uma fabrica
 		EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("CLIENTE_ORACLE");
 		
-		//Obter um objeto do Entity maganer
+		//Obter um entity manager
 		EntityManager em = fabrica.createEntityManager();
 		
-		//Instanciar um Cliente
-		Cliente cliente = new Cliente("Priscila", "asdfa@fiap.com.br",new BigDecimal("1000"), 
-											LocalDate.of(2000, Month.APRIL, 19), null, Genero.FEMININO);
+		//Instanciar um cliente com o código (detached)
+		Cliente cliente = new Cliente(2, "Daniel Jorge 2", "jorge@gmail.com", 
+							new BigDecimal("500"), LocalDate.now() , null, Genero.MASCULINO);
 		
-		//Cadastrar um Cliente
-		em.persist(cliente);
-		
-		//Começar uma transação
-		em.getTransaction().begin();
-		//Finalizar a transação com commit
-		em.getTransaction().commit();
-		
-		System.out.println("Cliente cadastrado!");
-		
-		//Alterar o nome do cliente
-		cliente.setNome("Leandro");
+		//Atualizar no banco
+		//Retorna a cópia do objeto gerenciado
+		Cliente copia = em.merge(cliente);
 		
 		//Commit
 		em.getTransaction().begin();
 		em.getTransaction().commit();
 		
-		//Fechar os recursos
+		copia.setNome("Rafael");
+		
+		em.getTransaction().begin();
+		em.getTransaction().commit();
+		
+		//Fechar
 		em.close();
 		fabrica.close();
 		
