@@ -21,7 +21,7 @@ public class ExemploCadastro {
 		EntityManager em = fabrica.createEntityManager();
 		
 		//Instanciar um Cliente
-		Cliente cliente = new Cliente("Priscila", "asdfa@fiap.com.br",new BigDecimal("1000"), 
+		Cliente cliente = new Cliente("Priscila", "asdfsdfa@fiap.com.br",new BigDecimal("1000"), 
 											LocalDate.of(2000, Month.APRIL, 19), null, Genero.FEMININO);
 		
 		//Cadastrar um Cliente

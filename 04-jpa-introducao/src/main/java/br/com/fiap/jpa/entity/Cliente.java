@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.PostLoad;
+import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -81,6 +83,18 @@ public class Cliente {
 		this.codigo = codigo;
 	}
 
+	//Método que é executado automáticamente em algum momento
+	@PrePersist //antes de persist
+	public void executar() {
+		System.out.println("Cadastrando...");
+	}
+	
+	@PostLoad //executado depois de carregar o objeto
+	public void carregar() {
+		System.out.println("Carregando o cliente..");
+		idade = 10;
+	}
+	
 	public Integer getCodigo() {
 		return codigo;
 	}

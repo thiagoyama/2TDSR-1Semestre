@@ -1,0 +1,11 @@
+TB_VEICULO
+
+cd_veiculo number PK not null
+ds_modelo varchar2(50) not null
+vl_veiculo number(10,2)
+nr_ano number
+dt_revisao date
+ds_tipo varchar2(30), enum no java
+br_placa varchar2(8)
+
+Sequence SQ_TB_VEICULO
