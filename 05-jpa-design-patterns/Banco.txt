@@ -6,6 +6,6 @@ vl_veiculo number(10,2)
 nr_ano number
 dt_revisao date
 ds_tipo varchar2(30), enum no java
-br_placa varchar2(8)
+br_placa varchar2(8) unique
 
 Sequence SQ_TB_VEICULO
