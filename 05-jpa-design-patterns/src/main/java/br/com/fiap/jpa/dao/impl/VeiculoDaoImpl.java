@@ -4,6 +4,8 @@ import javax.persistence.EntityManager;
 
 import br.com.fiap.jpa.dao.VeiculoDao;
 import br.com.fiap.jpa.entity.Veiculo;
+import br.com.fiap.jpa.exception.CommitException;
+import br.com.fiap.jpa.exception.IdNotFoundException;
 
 public class VeiculoDaoImpl implements VeiculoDao {
 
@@ -17,26 +19,30 @@ public class VeiculoDaoImpl implements VeiculoDao {
 		em.persist(veiculo);
 	}
 
-	public Veiculo procurar(Integer id) {
-		return em.find(Veiculo.class, id);
+	public Veiculo procurar(Integer id) throws IdNotFoundException {
+		Veiculo veiculo = em.find(Veiculo.class, id);
+		//Validar se o veiculo existe, se não lançar uma exception
+		if (veiculo == null)
+			throw new IdNotFoundException();		
+		return veiculo; 
 	}
 
 	public void atualizar(Veiculo veiculo) {
 		em.merge(veiculo);
 	}
 
-	public void apagar(Integer id) {
+	public void apagar(Integer id) throws IdNotFoundException {
 		Veiculo veiculo = procurar(id);
 		em.remove(veiculo);
 	}
 
-	public void commit() {
+	public void commit() throws CommitException {
 		try {
 			em.getTransaction().begin();
 			em.getTransaction().commit();
 		} catch(Exception e) {
 			em.getTransaction().rollback();
-			throw new CommitException(); //Criar a exception 
+			throw new CommitException(); 
 		}
 	}
 

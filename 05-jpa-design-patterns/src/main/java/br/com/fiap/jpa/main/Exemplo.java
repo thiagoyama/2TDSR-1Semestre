@@ -10,6 +10,8 @@ public class Exemplo {
 		//Obter uma fabrica de entity manager
 		EntityManagerFactory fabrica = EntityManagerFactorySingleton.getInstance();
 		
+		//Cadastrar a garagem.. veiculo e etc.
+		
 		fabrica.close();
 	}
 	
