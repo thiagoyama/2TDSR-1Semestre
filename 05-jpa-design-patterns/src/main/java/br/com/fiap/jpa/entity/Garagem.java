@@ -20,6 +20,13 @@ public class Garagem {
 	
 	@Column(name="nm_garagem", nullable = false)
 	private String nome;
+	
+	//Construtores
+	public Garagem() {}
+	
+	public Garagem(String nome) {
+		this.nome = nome;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
