@@ -1,7 +1,5 @@
 package br.com.fiap.jpa.dao.impl;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import br.com.fiap.jpa.dao.GaragemDao;
