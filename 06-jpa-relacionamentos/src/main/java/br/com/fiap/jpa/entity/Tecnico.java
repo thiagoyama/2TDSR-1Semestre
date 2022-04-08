@@ -34,6 +34,15 @@ public class Tecnico {
 	
 	@Column(name="nr_tempo_carreira")
 	private Integer tempoCarreira;
+	
+	public Tecnico() {}
+	
+	public Tecnico(String nome, 
+				LocalDate dataNascimento, Integer tempoCarreira) {
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.tempoCarreira = tempoCarreira;
+	}
 
 	public Integer getCodigo() {
 		return codigo;

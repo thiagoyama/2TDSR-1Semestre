@@ -1,5 +1,6 @@
 package br.com.fiap.jpa.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Time {
 	private Integer codigo;
 	
 	//Relacionamento 1:1
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name = "cd_tecnico",  nullable = false)
 	private Tecnico tecnico;
 	
@@ -30,6 +31,14 @@ public class Time {
 	
 	@Column(name="nm_estadio", length = 50)
 	private String nomeEstadio;
+	
+	public Time() {}
+
+	public Time(Tecnico tecnico, String nome, String nomeEstadio) {
+		this.tecnico = tecnico;
+		this.nome = nome;
+		this.nomeEstadio = nomeEstadio;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
