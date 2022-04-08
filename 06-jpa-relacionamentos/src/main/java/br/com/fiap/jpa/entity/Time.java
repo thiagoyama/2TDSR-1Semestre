@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -17,6 +19,11 @@ public class Time {
 	@Column(name="cd_time")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "time")
 	private Integer codigo;
+	
+	//Relacionamento 1:1
+	@OneToOne
+	@JoinColumn(name = "cd_tecnico",  nullable = false)
+	private Tecnico tecnico;
 	
 	@Column(name="nm_time", length = 50, nullable = false)
 	private String nome;
@@ -46,6 +53,14 @@ public class Time {
 
 	public void setNomeEstadio(String nomeEstadio) {
 		this.nomeEstadio = nomeEstadio;
+	}
+
+	public Tecnico getTecnico() {
+		return tecnico;
+	}
+
+	public void setTecnico(Tecnico tecnico) {
+		this.tecnico = tecnico;
 	}
 	
 }

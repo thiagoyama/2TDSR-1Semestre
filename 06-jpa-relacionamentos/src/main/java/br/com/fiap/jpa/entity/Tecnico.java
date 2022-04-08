@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,6 +20,11 @@ public class Tecnico {
 	@Column(name="cd_tecnico")
 	@GeneratedValue(generator = "tecnico", strategy = GenerationType.SEQUENCE)
 	private Integer codigo;
+	
+	//Relacionamento 1:1 - Bidirecional
+	//mappedBy -> o nome do atributo que mapeia a relação
+	@OneToOne(mappedBy = "tecnico")
+	private Time time;
 	
 	@Column(name="nm_tecnico", nullable = false, length = 100)
 	private String nome;
@@ -59,6 +65,14 @@ public class Tecnico {
 
 	public void setTempoCarreira(Integer tempoCarreira) {
 		this.tempoCarreira = tempoCarreira;
+	}
+
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
 	}
 	
 }
