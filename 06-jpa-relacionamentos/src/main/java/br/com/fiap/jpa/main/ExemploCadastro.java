@@ -30,13 +30,17 @@ public class ExemploCadastro {
 			TecnicoDao tecnicoDao = new TecnicoDaoImpl(em);
 			 
 			//Cadastrar.. 
-			//tecnicoDao.cadastrar(tecnico);
-			//tecnicoDao.commit();
+//			tecnicoDao.cadastrar(tecnico);
+//			tecnicoDao.commit();
 			
-			//Cadastrar o time com o técemco
+			//Cadastrar o time com o técnico
 			Time time = new Time(tecnico, "Noroeste", "Alfredo de castilho");
 			TimeDao timeDao = new TimeDaoImpl(em);
 			
+			//Adicionar dois jogadores no time
+			
+			
+			//Cadastra o time, tecnico e jogadores em cascata
 			timeDao.cadastrar(time);
 			timeDao.commit();
 			

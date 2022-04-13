@@ -2,6 +2,7 @@ package br.com.fiap.jpa.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Tecnico {
 	
 	//Relacionamento 1:1 - Bidirecional
 	//mappedBy -> o nome do atributo que mapeia a relação
-	@OneToOne(mappedBy = "tecnico")
+	@OneToOne(mappedBy = "tecnico",cascade = CascadeType.PERSIST)
 	private Time time;
 	
 	@Column(name="nm_tecnico", nullable = false, length = 100)
