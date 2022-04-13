@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 
 import br.com.fiap.jpa.dao.TimeDao;
 import br.com.fiap.jpa.dao.impl.TimeDaoImpl;
+import br.com.fiap.jpa.entity.Jogador;
 import br.com.fiap.jpa.entity.Time;
 import br.com.fiap.jpa.exception.IdNotFoundException;
 import br.com.fiap.jpa.singleton.EntityManagerFactorySingleton;
@@ -24,10 +25,15 @@ public class ExemploBusca {
 			Time time = timeDao.procurar(1);
 			
 			//Exibir o nome do time
-			System.out.println(time.getNome());
+			System.out.println("Time: " + time.getNome());
 
 			//Exibir o nome do técnico
-			System.out.println(time.getTecnico().getNome());
+			System.out.println("Técnico: " + time.getTecnico().getNome());
+			
+			//Exibir o nome dos jogadores
+			for (Jogador jogador : time.getJogadores()) {
+				System.out.println(jogador.getNome());
+			}
 			
 		} catch (IdNotFoundException e) {
 			System.out.println(e.getMessage());

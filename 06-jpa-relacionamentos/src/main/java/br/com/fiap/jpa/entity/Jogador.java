@@ -47,6 +47,16 @@ public class Jogador {
 	@Column(name="fl_foto")
 	private byte[] foto;
 	
+	public Jogador() {}
+	
+	public Jogador(String nome, Integer numero, 
+									Posicao posicao, BigDecimal salario) {
+		this.nome = nome;
+		this.numero = numero;
+		this.posicao = posicao;
+		this.salario = salario;
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}

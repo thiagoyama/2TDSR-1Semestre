@@ -1,5 +1,6 @@
 package br.com.fiap.jpa.main;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,8 @@ import br.com.fiap.jpa.dao.TecnicoDao;
 import br.com.fiap.jpa.dao.TimeDao;
 import br.com.fiap.jpa.dao.impl.TecnicoDaoImpl;
 import br.com.fiap.jpa.dao.impl.TimeDaoImpl;
+import br.com.fiap.jpa.entity.Jogador;
+import br.com.fiap.jpa.entity.Posicao;
 import br.com.fiap.jpa.entity.Tecnico;
 import br.com.fiap.jpa.entity.Time;
 import br.com.fiap.jpa.exception.CommitException;
@@ -38,7 +41,11 @@ public class ExemploCadastro {
 			TimeDao timeDao = new TimeDaoImpl(em);
 			
 			//Adicionar dois jogadores no time
+			Jogador ronaldo = new Jogador("Ronaldo", 9, Posicao.ATACANTE, new BigDecimal("1000"));
+			Jogador marta = new Jogador("Marta", 10, Posicao.MEIA, new BigDecimal("1000"));
 			
+			time.addJogador(marta);
+			time.addJogador(ronaldo);
 			
 			//Cadastra o time, tecnico e jogadores em cascata
 			timeDao.cadastrar(time);

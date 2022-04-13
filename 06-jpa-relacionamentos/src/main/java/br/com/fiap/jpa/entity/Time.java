@@ -1,5 +1,6 @@
 package br.com.fiap.jpa.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,8 +32,8 @@ public class Time {
 	private Tecnico tecnico;
 	
 	//Relacionamento bidirecional 1:N
-	@OneToMany(mappedBy = "time", cascade = CascadeType.PERSIST)	
-	private List<Jogador> jogadores;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "time", cascade = CascadeType.PERSIST)	
+	private List<Jogador> jogadores = new ArrayList<Jogador>();
 	
 	@Column(name="nm_time", length = 50, nullable = false)
 	private String nome;
