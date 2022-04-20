@@ -1,12 +1,14 @@
 package br.com.fiap.jpa.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,6 +27,10 @@ public class Patrocinio {
 	
 	@Column(name="dt_fim_contrato")
 	private LocalDate dataFimContrato;
+	
+	//N:M bidirecional
+	@ManyToMany(mappedBy = "patrocinios")
+	private List<Time> times;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -48,6 +54,14 @@ public class Patrocinio {
 
 	public void setDataFimContrato(LocalDate dataFimContrato) {
 		this.dataFimContrato = dataFimContrato;
+	}
+
+	public List<Time> getTimes() {
+		return times;
+	}
+
+	public void setTimes(List<Time> times) {
+		this.times = times;
 	}
 	
 }
