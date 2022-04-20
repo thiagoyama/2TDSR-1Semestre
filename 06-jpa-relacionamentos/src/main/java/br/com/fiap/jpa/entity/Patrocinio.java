@@ -31,6 +31,13 @@ public class Patrocinio {
 	//N:M bidirecional
 	@ManyToMany(mappedBy = "patrocinios")
 	private List<Time> times;
+	
+	public Patrocinio() {}
+	
+	public Patrocinio(String nomeMarca, LocalDate dataFimContrato) {
+		this.nomeMarca = nomeMarca;
+		this.dataFimContrato = dataFimContrato;
+	}
 
 	public Integer getCodigo() {
 		return codigo;

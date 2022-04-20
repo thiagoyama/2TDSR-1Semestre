@@ -2,6 +2,8 @@ package br.com.fiap.jpa.main;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +13,7 @@ import br.com.fiap.jpa.dao.TimeDao;
 import br.com.fiap.jpa.dao.impl.TecnicoDaoImpl;
 import br.com.fiap.jpa.dao.impl.TimeDaoImpl;
 import br.com.fiap.jpa.entity.Jogador;
+import br.com.fiap.jpa.entity.Patrocinio;
 import br.com.fiap.jpa.entity.Posicao;
 import br.com.fiap.jpa.entity.Tecnico;
 import br.com.fiap.jpa.entity.Time;
@@ -46,6 +49,21 @@ public class ExemploCadastro {
 			
 			time.addJogador(marta);
 			time.addJogador(ronaldo);
+			
+			//Cadastrar dois patrocinios no time
+			//Instanciar dois patrocinios
+			Patrocinio p1 = new Patrocinio("Nike", LocalDate.of(2022, 1, 1));
+			Patrocinio p2 = new Patrocinio("Kalunga", LocalDate.of(2022, 1, 2));
+			
+			//Criar uma lista de patrocinio
+			List<Patrocinio> patrocinios = new ArrayList<Patrocinio>();
+			
+			//Adicionar os patrocinios na lista
+			patrocinios.add(p1);
+			patrocinios.add(p2);
+			
+			//Adicionar a lista de patrocinio no time
+			time.setPatrocinios(patrocinios);
 			
 			//Cadastra o time, tecnico e jogadores em cascata
 			timeDao.cadastrar(time);

@@ -34,11 +34,11 @@ public class Time {
 	private Tecnico tecnico;
 	
 	//Relacionamento bidirecional 1:N
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "time", cascade = CascadeType.PERSIST)	
+	@OneToMany(mappedBy = "time", cascade = CascadeType.PERSIST)	
 	private List<Jogador> jogadores = new ArrayList<Jogador>();
 	
 	//Relacionamento N:M
-	@ManyToMany
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name="TB_TIME_PATROCINIO",
 		joinColumns = @JoinColumn(name="cd_time"),
 		inverseJoinColumns = @JoinColumn(name="cd_patrocinio"))
