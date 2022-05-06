@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.fiap.dao.PacoteDao;
 import br.com.fiap.entity.Pacote;
+import br.com.fiap.entity.Transporte;
 
 public class PacoteDaoImpl extends GenericDaoImpl<Pacote,Integer> implements PacoteDao{
 
@@ -30,6 +31,12 @@ public class PacoteDaoImpl extends GenericDaoImpl<Pacote,Integer> implements Pac
 		query.setParameter("pipoca", fim);
 		//Executar a query
 		return query.getResultList();
+	}
+
+	public List<Pacote> buscarPorTransporte(Transporte transporte) {		
+		return em.createQuery("from Pacote p where p.transporte = :t", Pacote.class)
+				.setParameter("t", transporte)
+				.getResultList();
 	}
 
 }

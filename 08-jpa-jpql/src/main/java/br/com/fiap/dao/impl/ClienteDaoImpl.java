@@ -1,5 +1,7 @@
 package br.com.fiap.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import br.com.fiap.dao.ClienteDao;
@@ -9,6 +11,18 @@ public class ClienteDaoImpl extends GenericDaoImpl<Cliente,Integer> implements C
 
 	public ClienteDaoImpl(EntityManager entityManager) {
 		super(entityManager);
+	}
+
+	public List<Cliente> buscarPorParteNome(String nome) {
+		return em.createQuery("from Cliente c where c.nome like :n", Cliente.class)				
+				.setParameter("n", "%" + nome + "%")
+				.getResultList();
+	}
+
+	public List<Cliente> buscarPorEstado(String estado) {
+		return em.createQuery("from Cliente c where c.endereco.cidade.uf = :e", Cliente.class)
+				.setParameter("e", estado)
+				.getResultList();
 	}
 
 }
