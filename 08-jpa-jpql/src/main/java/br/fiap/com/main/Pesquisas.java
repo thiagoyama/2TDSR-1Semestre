@@ -1,5 +1,7 @@
 package br.fiap.com.main;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -59,6 +61,38 @@ public class Pesquisas {
 			System.out.println(p.getDescricao() 
 								+ " " + p.getTransporte().getEmpresa());
 		}
+		
+		//Pesquisar os clientes por estado
+		clientes = clienteDao.buscarPorEstado("PR");
+		
+		//Exibir o nome dos clientes e o estado
+		for (Cliente cliente : clientes) {
+			System.out.println(cliente.getNome() 
+					+ " " + cliente.getEndereco().getCidade().getUf());
+		}
+		
+		//Pesquisar os clientes por quantidade de dias de reserva
+		clientes = clienteDao.buscarPorQuantidadeDiasReserva(10);
+		
+		for (Cliente cliente : clientes) {
+			System.out.println(cliente.getNome());
+		}
+		
+		//Listar os 3 primeiros clientes
+		clientes = clienteDao.listar(0 , 3);
+		
+		for (Cliente cliente : clientes) {
+			System.out.println(cliente.getNome());
+		}
+		
+		Calendar inicio = new GregorianCalendar(2021, Calendar.APRIL, 10);
+		Calendar inicio = new GregorianCalendar(2021, Calendar.APRIL, 10);
+		
+		//Pesquisar o pacote por datas
+		
+		
+		//Exibir a descrição do pacote
+		
 		
 	}//class
 }//main

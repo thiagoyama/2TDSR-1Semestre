@@ -1,5 +1,6 @@
 package br.com.fiap.dao.impl;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -36,6 +37,13 @@ public class PacoteDaoImpl extends GenericDaoImpl<Pacote,Integer> implements Pac
 	public List<Pacote> buscarPorTransporte(Transporte transporte) {		
 		return em.createQuery("from Pacote p where p.transporte = :t", Pacote.class)
 				.setParameter("t", transporte)
+				.getResultList();
+	}
+
+	public List<Pacote> buscarPorDatas(Calendar inicio, Calendar fim) {
+		return em.createQuery("", Pacote.class)
+				.setParameter("i", fim)
+				.setParameter("", fim)
 				.getResultList();
 	}
 

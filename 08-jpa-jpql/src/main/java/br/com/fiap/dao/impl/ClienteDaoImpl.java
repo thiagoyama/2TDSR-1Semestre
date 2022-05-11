@@ -25,4 +25,11 @@ public class ClienteDaoImpl extends GenericDaoImpl<Cliente,Integer> implements C
 				.getResultList();
 	}
 
+	public List<Cliente> buscarPorQuantidadeDiasReserva(Integer qtd) {
+		return em.createQuery("select r.cliente from Reserva r where r.numeroDias = :d", Cliente.class)
+				.setParameter("d", qtd)
+				.setMaxResults(1) //máximo de resultados
+				.getResultList();
+	}
+
 }

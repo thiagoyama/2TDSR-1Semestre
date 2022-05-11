@@ -60,4 +60,11 @@ public abstract class GenericDaoImpl<T,K> implements GenericDao<T, K> {
 		}
 	}
 
+	public List<T> listar(Integer posicaoInicial, Integer quantidadeRetorno) {
+		return em.createQuery("from " + clazz.getName(), clazz)
+				.setFirstResult(posicaoInicial) //Posição do primeiro registro retornado
+				.setMaxResults(quantidadeRetorno) //Quantidade máxima de retorno
+				.getResultList();
+	}
+
 }
