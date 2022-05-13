@@ -1,5 +1,6 @@
 package br.fiap.com.main;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -85,14 +86,41 @@ public class Pesquisas {
 			System.out.println(cliente.getNome());
 		}
 		
-		Calendar inicio = new GregorianCalendar(2021, Calendar.APRIL, 10);
-		Calendar inicio = new GregorianCalendar(2021, Calendar.APRIL, 10);
+		//As datas para a pesquisa de pacotes
+		Calendar inicio = new GregorianCalendar(2023, Calendar.JANUARY, 10);
+		Calendar fim = new GregorianCalendar(2025, Calendar.APRIL, 10);
 		
 		//Pesquisar o pacote por datas
-		
+		pacotes = pacoteDao.buscarPorDatas(inicio, fim);
 		
 		//Exibir a descrição do pacote
+		for (Pacote item : pacotes) {
+			System.out.println(item.getDescricao());
+		}
 		
+		//Pesquisar os clientes por nome e nome da cidade
+		clientes = clienteDao.buscar("a", "Salvador");
+		
+		//Exibir o nome dos clientes e o nome das cidades
+		for (Cliente churros : clientes) {
+			System.out.println(churros.getNome() + " - " + 
+					churros.getEndereco().getCidade().getNome());
+		}
+		
+		List<String> estados = Arrays.asList(new String[] {"SP", "BA", "RJ"});
+		
+		//Pesquisar os clientes de SP e BA
+		clientes = clienteDao.buscarPorEstados(estados);
+		
+		for (Cliente c : clientes) {
+			System.out.println(c.getNome() + " " + 
+					c.getEndereco().getCidade().getUf());
+		}
 		
 	}//class
 }//main
+
+
+
+
+

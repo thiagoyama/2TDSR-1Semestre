@@ -1,6 +1,7 @@
 package br.com.fiap.dao;
 
 import java.util.List;
+
 import br.com.fiap.entity.Cliente;
 
 public interface ClienteDao extends GenericDao<Cliente,Integer>{
@@ -10,5 +11,9 @@ public interface ClienteDao extends GenericDao<Cliente,Integer>{
 	List<Cliente> buscarPorEstado(String estado);
 	
 	List<Cliente> buscarPorQuantidadeDiasReserva(Integer qtd);
+	
+	List<Cliente> buscar(String nome, String cidade);
+	
+	List<Cliente> buscarPorEstados(List<String> estados);
 	
 }

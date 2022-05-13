@@ -28,8 +28,31 @@ public class ClienteDaoImpl extends GenericDaoImpl<Cliente,Integer> implements C
 	public List<Cliente> buscarPorQuantidadeDiasReserva(Integer qtd) {
 		return em.createQuery("select r.cliente from Reserva r where r.numeroDias = :d", Cliente.class)
 				.setParameter("d", qtd)
-				.setMaxResults(1) //máximo de resultados
+				.setMaxResults(10) //máximo de resultados
+				.getResultList();
+	}
+
+	public List<Cliente> buscar(String nome, String cidade) {
+		return em.createQuery("from Cliente c where c.nome like :n and "
+				+ "c.endereco.cidade.nome like :cid", Cliente.class)
+				.setParameter("n", "%" + nome + "%")
+				.setParameter("cid", "%" + cidade  + "%")
+				.getResultList();
+	}
+
+	public List<Cliente> buscarPorEstados(List<String> estados) {
+		return em.createQuery("from Cliente churros where "
+				+ "churros.endereco.cidade.uf in :e", Cliente.class)
+				.setParameter("e", estados)
 				.getResultList();
 	}
 
 }
+
+
+
+
+
+
+
+
