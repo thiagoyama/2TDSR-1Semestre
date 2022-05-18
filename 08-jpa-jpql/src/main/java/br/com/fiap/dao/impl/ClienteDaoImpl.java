@@ -14,7 +14,7 @@ public class ClienteDaoImpl extends GenericDaoImpl<Cliente,Integer> implements C
 	}
 
 	public List<Cliente> buscarPorParteNome(String nome) {
-		return em.createQuery("from Cliente c where c.nome like :n", Cliente.class)				
+		return em.createQuery("from Cliente c where lower(c.nome) like lower(:n) order by c.nome", Cliente.class)				
 				.setParameter("n", "%" + nome + "%")
 				.getResultList();
 	}
@@ -45,6 +45,12 @@ public class ClienteDaoImpl extends GenericDaoImpl<Cliente,Integer> implements C
 				+ "churros.endereco.cidade.uf in :e", Cliente.class)
 				.setParameter("e", estados)
 				.getResultList();
+	}
+
+	public Long contarPorEstado(String estado) {		
+		return em.createQuery("select count(c) from Cliente c where c.endereco.cidade.uf = :u", Long.class)
+				.setParameter("u", estado)
+				.getSingleResult();
 	}
 
 }
