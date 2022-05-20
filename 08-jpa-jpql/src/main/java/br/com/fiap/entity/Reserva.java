@@ -10,8 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+//Definir a pesquisa de reserva pelo CPF do cliente
+@NamedQuery(name="Reserva.porCpfCliente", 
+	query="select r from Reserva r where r.cliente.cpf like concat(:c,'%')")
 
 @Entity
 @Table(name="TB_EAD_RESERVA")

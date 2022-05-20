@@ -7,9 +7,11 @@ import javax.persistence.EntityManagerFactory;
 
 import br.com.fiap.dao.ClienteDao;
 import br.com.fiap.dao.PacoteDao;
+import br.com.fiap.dao.ReservaDao;
 import br.com.fiap.dao.TransporteDao;
 import br.com.fiap.dao.impl.ClienteDaoImpl;
 import br.com.fiap.dao.impl.PacoteDaoImpl;
+import br.com.fiap.dao.impl.ReservaDaoImpl;
 import br.com.fiap.dao.impl.TransporteDaoImpl;
 import br.com.fiap.entity.Cliente;
 import br.com.fiap.entity.Transporte;
@@ -52,6 +54,15 @@ public class Pesquisas2 {
 		
 		//Exibir a soma
 		System.out.println("A soma dos preços é: " + soma);
+		
+		//Instanciar a ReservaDao
+		ReservaDao reservaDao = new ReservaDaoImpl(em);
+		
+		//Pesquisar as reservas por cpf do cliente
+		
+		
+		//Exibir a descrição do pacote da reserva e o nome do cliente
+		
 		
 		em.close();
 		fabrica.close();
