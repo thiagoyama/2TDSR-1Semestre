@@ -18,4 +18,7 @@ public interface PacoteDao extends GenericDao<Pacote,Integer>{
 	
 	Double somarPrecoPorTransporte(Transporte transporte);
 	
+	//Pesquisar os pacotes com o preço menor ou igual 
+	List<Pacote> buscarPorPrecoMenor(Double preco);
+	
 }

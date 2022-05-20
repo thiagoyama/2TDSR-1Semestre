@@ -14,6 +14,8 @@ import br.com.fiap.dao.impl.PacoteDaoImpl;
 import br.com.fiap.dao.impl.ReservaDaoImpl;
 import br.com.fiap.dao.impl.TransporteDaoImpl;
 import br.com.fiap.entity.Cliente;
+import br.com.fiap.entity.Pacote;
+import br.com.fiap.entity.Reserva;
 import br.com.fiap.entity.Transporte;
 import br.com.fiap.singleton.EntityManagerFactorySingleton;
 
@@ -59,10 +61,20 @@ public class Pesquisas2 {
 		ReservaDao reservaDao = new ReservaDaoImpl(em);
 		
 		//Pesquisar as reservas por cpf do cliente
-		
+		List<Reserva> reservas = reservaDao.buscarPorCpfCliente("502");
 		
 		//Exibir a descrição do pacote da reserva e o nome do cliente
+		for (Reserva r : reservas) {
+			System.out.println(r.getPacote().getDescricao() + " " + r.getCliente().getNome());
+		}
 		
+		//Pesquisar os pacotes com preço menor do que 2000
+		List<Pacote> pacotes = pacoteDao.buscarPorPrecoMenor(2000d);
+		
+		//Exibir a descrição e o preço do pacote
+		for (Pacote p : pacotes) {
+			System.out.println(p.getDescricao() + " " + p.getPreco());
+		}
 		
 		em.close();
 		fabrica.close();
