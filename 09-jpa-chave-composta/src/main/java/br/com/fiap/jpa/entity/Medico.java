@@ -1,5 +1,6 @@
 package br.com.fiap.jpa.entity;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,8 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SecondaryTable;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+//Mapeia uma tabela secundária
+@SecondaryTable(name="TB_MEDICO_FINANCEIRO")
 
 @Entity
 @Table(name="TB_MEDICO")
@@ -23,6 +28,12 @@ public class Medico {
 	
 	@Column(name="nm_medico", length = 80, nullable = false)
 	private String nome;
+	
+	@Column(name="vl_salario", table = "TB_MEDICO_FINANCEIRO")
+	private BigDecimal salario;
+	
+	@Column(name="nr_conta", table = "TB_MEDICO_FINANCEIRO")
+	private Integer numeroConta;
 	
 	@Column(name="nr_crm", nullable = false)
 	private Integer crm;
@@ -60,6 +71,22 @@ public class Medico {
 
 	public void setConsultas(List<Consulta> consultas) {
 		this.consultas = consultas;
+	}
+
+	public Integer getNumeroConta() {
+		return numeroConta;
+	}
+
+	public void setNumeroConta(Integer numeroConta) {
+		this.numeroConta = numeroConta;
+	}
+
+	public BigDecimal getSalario() {
+		return salario;
+	}
+
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
 	}
 	
 }

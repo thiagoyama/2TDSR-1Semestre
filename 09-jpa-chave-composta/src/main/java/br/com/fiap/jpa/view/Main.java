@@ -1,5 +1,6 @@
 package br.com.fiap.jpa.view;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.EntityManager;
@@ -25,6 +26,8 @@ public class Main {
 		Medico medico = new Medico();
 		medico.setNome("Drauzio");
 		medico.setCrm(23423);
+		medico.setSalario(new BigDecimal("50000"));
+		medico.setNumeroConta(54646);
 		
 		Paciente paciente = new Paciente();
 		paciente.setNome("Raissa");
